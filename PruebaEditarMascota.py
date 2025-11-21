@@ -101,7 +101,7 @@ time.sleep(2)
 #Click en Editar
 try:
     boton = WebDriverWait(driver, 5).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[contains(normalize-space(), ✏️ Editar')]"))
+        EC.element_to_be_clickable((By.XPATH, "//a[contains(normalize-space(), 'Editar')]"))
     )
     boton.click()
     print("✅ Click en Editar")
@@ -109,3 +109,46 @@ try:
 
 except :
     print("❌ Error:")
+
+try:
+
+    #Campo nombre
+    campo_nombre = wait.until(
+        EC.presence_of_element_located((By.NAME, "nombre"))
+    )
+    campo_nombre.clear()
+    campo_nombre.send_keys(NOMBRE)
+
+    #Campo raza
+
+    campo_nombre = wait.until(
+        EC.presence_of_element_located((By.NAME, "raza"))
+    )
+    campo_nombre.clear()
+    campo_nombre.send_keys(RAZA)
+
+    #Campo descripcion
+
+    campo_nombre = wait.until(
+        EC.presence_of_element_located((By.NAME, "descripcion"))
+    )
+    campo_nombre.clear()
+    campo_nombre.send_keys(DESCRIPCION)
+
+    print("✅ Click en Actualizar")
+    screenshot(driver, "06_Actualizacion_Datos")
+
+except:
+    print("⚠️ No fue posible Actualizar los datos")
+
+# Click en el boton Actualizar
+
+boton = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Actualizar')]"))
+    )
+boton.click()
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+
+print("✅ Click en Actualizar")
+screenshot(driver, "07_click_Actualizar")
